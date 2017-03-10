@@ -1,4 +1,4 @@
-"""LogProject URL Configuration
+"""LoginViewPro URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.10/topics/http/urls/
@@ -13,9 +13,26 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+
+
 from django.conf.urls import url
 from django.contrib import admin
+from .views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^login/$',login),
+    url(r'^registration/$',registration),
+    url(r'^logout/$',logout),
+    url(r'^home/$',home),    
+    url(r'^user/login/page/$',user_login_page),
+    url(r'^registration/page/$',registration_page),
+    #url(r'^Index/page/$',Index_page),
+	url(r'^logout/page/$',logout_page),
+
+
+
+
 ]
+
+ 
