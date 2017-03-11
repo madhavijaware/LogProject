@@ -6,14 +6,13 @@
 	<!-- {% load static %} -->
 <!--<link href="{% static '/bootstrap.min.css'%}" rel="stylesheet" type="text/css"/> -->
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" i
-        ntegrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 	<title> </title>
 	<meta charset="utf-8">
 	
 </head>
-<form role="form" action="/registration//" method="POST" >
+<form role="form" action="/registration/" method="POST" >
 
    <body>
 <div class="page-header">
@@ -27,28 +26,28 @@
 	
 	<div class="form-group">		 		
 		
-		<div class="col-sm-5" style="background-color:yellow">
+		<div class="col-sm-5">
 
-		<label for="name">First_Name: </label>
+		<label for="name">User</label>
 		<div class="input-group">
 		
 		<span class="input-group-addon" id="basic-addon1"> <span class="glyphicon glyphicon-user"></span> </span>
 		
-		<input type="text" name="first_name" class="form-control" id="name" placeholder="Enter Name"> <br>
+		<input type="text" name="user" class="form-control" id="name" placeholder="Enter Name"> <br>
 		</div> 
 
-		<label for="name">Last_Name: </label>
+		<label for="name">User_Name: </label>
 		<div class="input-group">
 		
 		<span class="input-group-addon" id="basic-addon1"> <span class="glyphicon glyphicon-user"></span> </span>
 		
-		<input type="text" name="last_name" class="form-control" id="name" placeholder="Enter Name"> <br>
+		<input type="text" name="User_Name" class="form-control" id="name" placeholder="Enter Name"> <br>
 		</div> 
 
 		<label for="contact">Contact: </label>
 		<div class="input-group">
 		<span class="input-group-addon" id="basic-addon1"> <span class="glyphicon glyphicon-phone"></span></span>
-		<input type="text" name="Mob_no" class="form-control" id="contact" placeholder="Enter Contact No.">
+		<input type="text" name="Mobile_Number" class="form-control" id="contact" placeholder="Enter Contact No.">
 		</div>
 	 
 	
@@ -56,21 +55,27 @@
 		<label for="email">Email:</label>	
 		<div class="input-group">
 		<span class="input-group-addon" id="basic-addon1"> <span class="glyphicon glyphicon-list"> </span> </span>
-		<input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+		<input type="email" name="Email" class="form-control" id="email" placeholder="Enter email">
 		</div>
 
 
-		<label for="password">Password:</label>	
+		<label for="password">User Password:</label>	
 		<div class="input-group">
 		<span class="input-group-addon" id="basic-addon1"> <span class="glyphicon glyphicon-list"> </span> </span>
-		<input type="password" name="user_pswrd" class="form-control" id="password" placeholder="Enter 8 character password">
+		<input type="password" name="User_Password" class="form-control" id="password" placeholder="Enter 8 character password">
+		</div>
+
+		<label for="password">Confirm Password:</label>	
+		<div class="input-group">
+		<span class="input-group-addon" id="basic-addon1"> <span class="glyphicon glyphicon-list"> </span> </span>
+		<input type="password" name="Conform_Passsword" class="form-control" id="password" placeholder="Enter 8 character password">
 		</div>
 		 
 		
 
 	<br>
 		<div class='col-md-offset-3'>
-		<button type="submit" class="btn btn-primary"><a href="signin.html">SignUp</a></button>
+	<button type="submit" class="btn btn-primary" <a href="signin.html">SignUp</a ></button>
 		<button type="reset" class="btn btn-primary">Reset</button>
 		
 		</div>

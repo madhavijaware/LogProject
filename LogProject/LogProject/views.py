@@ -5,7 +5,9 @@ from .models import *
 import time
 from django.http import JsonResponse
 from django.shortcuts import render_to_response,render
-from django.contrib import auth
+from django.contrib.auth import authenticate
+from django.contrib.auth import login 
+
 
 
 
@@ -16,13 +18,13 @@ from django.contrib import auth
 
 
 def user_login_page(request):
-        return render_to_response('html_templates/signin.html')
+    return render_to_response('html_templates/signin.html')
 
 def registration_page(request):
-        return render_to_response('html_templates/signup.html')
+    return render_to_response('html_templates/signup.html')
 
 def logout_page(request):
-        return render_to_response('html_templates/logout.html')
+    return render_to_response('html_templates/logout.html')
 
 def logout_page(request):
     logout(request)
@@ -35,7 +37,9 @@ def home(request):
     return render_to_response('index.html', { 'user': request.user })    
 
  
-def login(request):
+def user_login(request):
+
+    #jsonobj=json.loads(request.body)
     jsonobj=request.POST
     print jsonobj
 
@@ -64,17 +68,21 @@ def logout(request):
 
 
 def registration(request):
+    #jsonobj = json.loads(request.body)
     jsonobj = request.POST
     print jsonobj
     
-    #user_name=jsonobj.get("User_Name")
+    user_name=jsonobj.get("Email")
     u_mobno=jsonobj.get("Mobile_Number")
-    u_email=jsonobj.get("Email")
-    
-    user = jsonobj.get('User_Name')
+
+    user = jsonobj.get('user')
     user_password = jsonobj.get('User_Password')
     conform_password = jsonobj.get('Conform_Passsword')
-    print user 
+    
+    print user,user_name 
+
+    if (user_password) < 8:
+        return HttpResponse(json.dumps({'validation':'please enter minimum 8 characters', "status":False}), content_type="application/json")
     
     if user == None:
        return HttpResponse(json.dumps({'validation':'name is required', 'status':False}), content_type="application/json")
@@ -90,9 +98,9 @@ def registration(request):
     user.set_password(user_password)
     user.save()
     
-    client=Client.objects.create(mob_no= u_mobno,email = u_email, user_name = user,password = user_password,confirm_pwd =conform_password)
+    user=Registration.objects.create(mob_no= u_mobno,email = u_email, user_name = user,password = user_password,confirm_pwd =conform_password)
     
-    #return HttpResponse(json.dumps({'validation':'registraion succesfully', 'status':True}), content_type="application/json")
+    return HttpResponse(json.dumps({'validation':'registraion succesfully', 'status':True}), content_type="application/json")
     return render_to_response("html_templates/sigin.html")
 
 #def registration(request):
@@ -127,9 +135,24 @@ def registration(request):
 #    client=Client.objects.create(client_name=uname,mob_no=umobno,email=uemail,user=user)
 #
 #    return  HttpResponse(json.dumps({'validation':'registraion succesfully', "status":True}), content_type="application")
-#
-#
-#
-#
-#
-#
+
+from django.http import *
+from django.shortcuts import render_to_response,redirect
+from django.template import RequestContext
+#from birthdayreminder.models import *
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
+
+def login_user(request):
+    logout(request)
+    username = password = ''
+    if request.POST:
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect('/main/')
+    return render_to_response('signin.html')

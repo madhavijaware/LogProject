@@ -21,13 +21,13 @@ from .views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^login/$',login),
+    url(r'^user/login/$',user_login),
     url(r'^registration/$',registration),
     url(r'^logout/$',logout),
     url(r'^home/$',home),    
     url(r'^user/login/page/$',user_login_page),
     url(r'^registration/page/$',registration_page),
-    #url(r'^Index/page/$',Index_page),
+    url(r'^login/user/$',login_user),
 	url(r'^logout/page/$',logout_page),
 
 
